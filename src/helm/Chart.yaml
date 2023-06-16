@@ -1,0 +1,10 @@
+apiVersion: v2
+name: kong
+version: "1.0.0"
+description: "Helm chart for installing Kong Plugins to an existing Kong-Applied Cluster"
+keywords:
+  - kong
+dependencies:
+  - name: kong
+    version: 2.14.0
+    repository: https://charts.konghq.com

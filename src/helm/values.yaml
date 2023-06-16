@@ -1,0 +1,39 @@
+kong:
+  env:
+    plugins: "plugin_1,plugin_2,plugin_3,plugin_4,plugin_5,plugin_6,plugin_7,plugin_8,plugin_9,plugin_10"
+
+    # Python Plugins Server
+    pluginserver_names: "python"
+    pluginserver_python_socket: "/usr/local/kong/python_pluginserver.sock"
+    pluginserver_python_start_cmd: "/home/kong/bin/pluginserver.sh"
+    pluginserver_python_query_cmd: "/home/kong/bin/pluginserver.sh --dump-all-plugins"
+
+    # Default log level
+    LOG_LEVEL: "info"
+
+  namespace: kong
+
+  image:
+    unifiedRepoTag: kong-gateway:1.0.0
+    pullPolicy: IfNotPresent
+
+  ingressController:
+    installCRDs: false
+    enabled: true
+    image:
+      repository: kong/kubernetes-ingress-controller
+      tag: "2.8.1"
+    ingressClass: kong
+    ingressClassAnnotations: {}
+
+  postgresql:
+    enabled: false
+
+  podSecurityPolicy:
+    enabled: false
+    spec:
+      privileged: false
+      allowPrivilegeEscalation: false
+
+  admin:
+    enabled: false

@@ -1,0 +1,10 @@
+[tool.poetry]
+name = "kong"
+version = "1.0.0"
+description = ""
+authors = []
+
+[tool.poetry.dependencies]
+python = "^3.9"
+kong-pdk = "^0.33"
+guppy3 = "^3.1.3"
